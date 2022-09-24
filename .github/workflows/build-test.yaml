@@ -1,0 +1,14 @@
+name: Run Tests
+
+on: [push]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Stop MySQL
+      run: |
+        sudo /etc/init.d/mysql stop
+    - name: Run containers
+      run: docker-compose -f docker/ci/docker-compose.yaml up --abort-on-container-exit

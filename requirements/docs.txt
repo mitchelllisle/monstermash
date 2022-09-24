@@ -1,0 +1,7 @@
+mkdocs
+mkdocs-material
+mkdocs-gen-files
+mkdocs-literate-nav
+mkdocs-gen-files
+mkdocstrings[python]
+mkautodoc

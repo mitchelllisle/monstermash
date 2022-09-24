@@ -1,0 +1,60 @@
+site_name: monstermash
+repo_url: https://github.com/mitchelllisle/monstermash
+repo_name: mitchelllisle/yessql
+site_author: Mitchell Lisle
+edit_uri: ""
+
+theme:
+  name: "material"
+  font:
+    text: Inter
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  icon:
+    logo: material/database
+    repo: fontawesome/brands/github
+  features:
+    - content.code.annotate
+    - navigation.instant
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+
+nav:
+  - Home: index.md
+  - Usage: usage.md
+  - API : docs/
+  - Contributing: contributing.md
+
+plugins:
+  - search
+  - gen-files:
+      scripts:
+        - docs/gen_pages.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - mkdocstrings:
+      watch:
+        - src/monstermash
+      handlers:
+        python:
+          options:
+            show_source: false
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - admonition

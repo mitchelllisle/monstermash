@@ -1,0 +1,4 @@
+PyNaCl
+click
+pydantic
+questionary

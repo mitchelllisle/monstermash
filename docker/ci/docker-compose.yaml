@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  monstermash:
+    image: themattrix/tox
+    volumes:
+      - ../../:/source
+    env_file:
+      - ../../tests/.tests.env
+    entrypoint: ../../source/docker/ci/run-tests.sh

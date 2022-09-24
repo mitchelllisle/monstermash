@@ -1,0 +1,14 @@
+bumpversion
+
+twine
+
+# linting
+flake8
+flake8-bugbear
+flake8-eradicate
+pep8-naming
+dlint
+# type checking
+mypy
+
+pre-commit
