@@ -7,10 +7,10 @@ import questionary
 
 from monstermash.crypt import Crypt
 
-red = partial(click.style, fg='#FF5A5F')
-blue = partial(click.style, fg='#0B3954')
-green = partial(click.style, fg='#087E8B')
-danger = partial(click.style, fg='#C81D25')
+red = partial(click.style, fg='yellow')
+blue = partial(click.style, fg='blue')
+green = partial(click.style, fg='green')
+danger = partial(click.style, fg='red')
 
 
 def open_file(file):
