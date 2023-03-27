@@ -71,10 +71,13 @@ install-docs:
 install-tests:
 	poetry install --only test
 
+install-all:
+	poetry install --with dev,test,docs
+
 install-dev-local: ## install all the stuff you need to develop locally
 	pip install --upgrade pip
 	pip install wheel
-	poetry install
+	poetry install --with dev,test,docs
 	pre-commit install
 
 publish: dist ## publish the package to PyPI

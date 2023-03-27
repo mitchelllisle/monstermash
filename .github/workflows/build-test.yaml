@@ -17,6 +17,6 @@ jobs:
     - name: Install Poetry
       run: pip install poetry
     - name: Install Tests
-      run: make install
+      run: make install-all
     - name: Run Tests
       run: make test
