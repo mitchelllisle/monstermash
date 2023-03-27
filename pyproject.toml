@@ -43,3 +43,6 @@ pytest-cov = "^4.0.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+monstermash = { callable = "monstermash.__main__:main"}
