@@ -33,7 +33,7 @@ clean-test: ## remove test and coverage artifacts
 test: ## run tests (and coverage if configured in setup.cfg) with the default Python
 	@echo -----------------------------------------------------------------
 	@echo RUNNING TESTS...
-	pytest --cov=monstermash
+	poetry run pytest --cov=monstermash
 	@echo ✅ Tests have passed! Nice work!
 	@echo -----------------------------------------------------------------
 
