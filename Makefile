@@ -53,10 +53,6 @@ install: clean ## install the package to the active Python's site-packages via p
 	@echo INSTALLING monstermash...
 	poetry install
 	@echo INSTALLED monstermash
-	@echo - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	@echo monstermash info:
-	@echo - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	pip show monstermash
 	@echo -----------------------------------------------------------------
 
 
