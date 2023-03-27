@@ -4,12 +4,6 @@ repos:
       hooks:
       - id: black
         args: [--line-length=100, --skip-string-normalization]
-  - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.9.0
-    hooks:
-      - id: flake8
-        additional_dependencies: [ flake8-bugbear, flake8-eradicate, pep8-naming, dlint ]
-        args: [ '--config=setup.cfg', '--max-line-length=100']
   -   repo: https://github.com/pre-commit/pre-commit-hooks
       rev: v3.4.0
       hooks:

@@ -33,7 +33,7 @@ clean-test: ## remove test and coverage artifacts
 test: ## run tests (and coverage if configured in setup.cfg) with the default Python
 	@echo -----------------------------------------------------------------
 	@echo RUNNING TESTS...
-	pytest --cov=monstermash
+	poetry run pytest --cov=monstermash
 	@echo ✅ Tests have passed! Nice work!
 	@echo -----------------------------------------------------------------
 
@@ -44,20 +44,15 @@ coverage: ## check code coverage quickly with the default Python
 
 
 dist: clean ## builds source and wheel package
-	python setup.py sdist
-	python setup.py bdist_wheel
+	poetry build
 	ls -l dist
 
 
 install: clean ## install the package to the active Python's site-packages via pip
 	@echo -----------------------------------------------------------------
 	@echo INSTALLING monstermash...
-	pip install .
+	poetry install
 	@echo INSTALLED monstermash
-	@echo - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	@echo monstermash info:
-	@echo - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	pip show monstermash
 	@echo -----------------------------------------------------------------
 
 
@@ -70,24 +65,23 @@ test-cov: test ## run tests locally and output coverage file
 commit-cov:
 	git add COVERAGE.txt --force
 
-install-all: ## install extra requirements for tests etc
-	pip install -r requirements/all.txt
-
 install-docs:
-	pip install -r requirements/docs.txt
+	poetry install --only docs
 
 install-tests:
-	pip install -r requirements/test.txt
+	poetry install --only test
+
+install-all:
+	poetry install --with dev,test,docs
 
 install-dev-local: ## install all the stuff you need to develop locally
 	pip install --upgrade pip
 	pip install wheel
-	pip install -e .
-	pip install -r requirements/all.txt
+	poetry install --with dev,test,docs
 	pre-commit install
 
 publish: dist ## publish the package to PyPI
-	twine upload dist/*
+	poetry publish
 
 run-infra:
 	docker-compose -f docker/dev/docker-compose.yaml up --remove-orphans -d
