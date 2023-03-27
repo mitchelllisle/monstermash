@@ -5,7 +5,11 @@
 > ✍️ author: Mitchell Lisle
 
 ## Install
-First you need poetry
+Install from PyPi
+
+```shell
+pip install monstermash
+```
 
 ## Usage
 Monstermash can generate keys, encrypt files or text with keys, and decrypt a file or text with keys
