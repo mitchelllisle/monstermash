@@ -4,6 +4,8 @@
 
 > ✍️ author: Mitchell Lisle
 
+## Install
+First you need poetry
 
 ## Usage
 Monstermash can generate keys, encrypt files or text with keys, and decrypt a file or text with keys
