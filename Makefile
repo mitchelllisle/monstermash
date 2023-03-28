@@ -90,5 +90,4 @@ stop-infra:
 	docker-compose -f docker/dev/docker-compose.yaml down
 
 docs: ## generate Sphinx HTML documentation, including API docs
-	$(MAKE) -C docs clean
-	$(MAKE) -C docs html
+	mkdocs build html
