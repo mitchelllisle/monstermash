@@ -36,4 +36,4 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install poetry && make install && make install-docs && pip list
-      - run: home/runner/.cache/pypoetry/virtualenvs && mkdocs gh-deploy --force
+      - run: poetry run mkdocs gh-deploy --force
