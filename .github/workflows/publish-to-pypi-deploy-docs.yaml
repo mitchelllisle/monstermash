@@ -35,4 +35,4 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.x
-      - run: pip install poetry && make install && make install-docs && mkdocs gh-deploy --force
+      - run: pip install poetry && make install && make install-docs && pip list && mkdocs gh-deploy --force
