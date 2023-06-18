@@ -1,7 +1,7 @@
-Name                                                                 Stmts   Miss  Cover
-----------------------------------------------------------------------------------------
-/opt/homebrew/lib/python3.10/site-packages/monstermash/__init__.py       3      0   100%
-/opt/homebrew/lib/python3.10/site-packages/monstermash/__main__.py      51     51     0%
-/opt/homebrew/lib/python3.10/site-packages/monstermash/crypt.py         31     31     0%
-----------------------------------------------------------------------------------------
-TOTAL                                                                   85     82     4%
+Name                          Stmts   Miss  Cover
+-------------------------------------------------
+src/monstermash/__init__.py       3      0   100%
+src/monstermash/__main__.py      51     51     0%
+src/monstermash/crypt.py         31     31     0%
+-------------------------------------------------
+TOTAL                            85     82     4%
