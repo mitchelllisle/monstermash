@@ -388,12 +388,12 @@ files = [
 
 [[package]]
 name = "dlint"
-version = "0.14.0"
+version = "0.14.1"
 description = "Dlint is a tool for encouraging best coding practices and helping ensure Python code is secure."
 optional = false
 python-versions = "*"
 files = [
-    {file = "dlint-0.14.0-py3-none-any.whl", hash = "sha256:3b40e353a2fdb531253973bb53be51d2218ccd97647e14754ddd20fc1ce62a38"},
+    {file = "dlint-0.14.1-py3-none-any.whl", hash = "sha256:8caa4271ab6f69bba2785bb565b636eeb40baffd446c85380f848fb4abd6aa2d"},
 ]
 
 [package.dependencies]
