@@ -388,12 +388,12 @@ files = [
 
 [[package]]
 name = "dlint"
-version = "0.14.0"
+version = "0.14.1"
 description = "Dlint is a tool for encouraging best coding practices and helping ensure Python code is secure."
 optional = false
 python-versions = "*"
 files = [
-    {file = "dlint-0.14.0-py3-none-any.whl", hash = "sha256:3b40e353a2fdb531253973bb53be51d2218ccd97647e14754ddd20fc1ce62a38"},
+    {file = "dlint-0.14.1-py3-none-any.whl", hash = "sha256:8caa4271ab6f69bba2785bb565b636eeb40baffd446c85380f848fb4abd6aa2d"},
 ]
 
 [package.dependencies]
@@ -802,13 +802,13 @@ Markdown = "*"
 
 [[package]]
 name = "mkdocs"
-version = "1.4.2"
+version = "1.4.3"
 description = "Project documentation with Markdown."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "mkdocs-1.4.2-py3-none-any.whl", hash = "sha256:c8856a832c1e56702577023cd64cc5f84948280c1c0fcc6af4cd39006ea6aa8c"},
-    {file = "mkdocs-1.4.2.tar.gz", hash = "sha256:8947af423a6d0facf41ea1195b8e1e8c85ad94ac95ae307fe11232e0424b11c5"},
+    {file = "mkdocs-1.4.3-py3-none-any.whl", hash = "sha256:6ee46d309bda331aac915cd24aab882c179a933bd9e77b80ce7d2eaaa3f689dd"},
+    {file = "mkdocs-1.4.3.tar.gz", hash = "sha256:5955093bbd4dd2e9403c5afaf57324ad8b04f16886512a3ee6ef828956481c57"},
 ]
 
 [package.dependencies]
@@ -1098,13 +1098,13 @@ testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
 name = "pre-commit"
-version = "3.2.2"
+version = "3.3.3"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pre_commit-3.2.2-py2.py3-none-any.whl", hash = "sha256:0b4210aea813fe81144e87c5a291f09ea66f199f367fa1df41b55e1d26e1e2b4"},
-    {file = "pre_commit-3.2.2.tar.gz", hash = "sha256:5b808fcbda4afbccf6d6633a56663fed35b6c2bc08096fd3d47ce197ac351d9d"},
+    {file = "pre_commit-3.3.3-py2.py3-none-any.whl", hash = "sha256:10badb65d6a38caff29703362271d7dca483d01da88f9d7e05d0b97171c136cb"},
+    {file = "pre_commit-3.3.3.tar.gz", hash = "sha256:a2256f489cd913d575c145132ae196fe335da32d91a8294b7afe6622335dd023"},
 ]
 
 [package.dependencies]
