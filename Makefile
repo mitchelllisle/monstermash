@@ -1,7 +1,7 @@
 .PHONY: clean clean-test clean-pyc clean-build docs help test test-cov
 .DEFAULT_GOAL := help
 
-VERSION=0.8.0
+VERSION=1.0.0
 
 clean: ## remove all build, test, coverage and Python artifacts
 	@echo -----------------------------------------------------------------
