@@ -38,6 +38,7 @@ def generate():
 def encrypt():
     private_key = questionary.password('Enter your private key:').ask()
     public_key = questionary.text('Enter the public key:').ask()
+
     crypt = Crypt(private_key.encode())
 
     input_type = questionary.select(
@@ -50,7 +51,7 @@ def encrypt():
     else:
         data = questionary.password('Enter (or paste) the text to encrypt:').ask()
 
-    encrypted = crypt.encrypt(data, public_key)
+    encrypted = crypt.encrypt(data.encode(), public_key.encode())
     click.echo(encrypted)
 
 
