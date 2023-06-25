@@ -1,16 +1,10 @@
 import json
 import re
-from functools import partial
 
 import click
 import questionary
 
 from monstermash.crypt import Crypt
-
-red = partial(click.style, fg='yellow')
-blue = partial(click.style, fg='blue')
-green = partial(click.style, fg='green')
-danger = partial(click.style, fg='red')
 
 
 def open_file(file):
@@ -33,10 +27,10 @@ def generate():
     keys = Crypt.generate()
 
     click.echo('-----------------')
-    click.echo(red('Private Key (keep is secret, keep it safe)'))
-    click.echo(red(keys.private_key.get_secret_value()))
-    click.echo(blue('Public Key (you can share this one)'))
-    click.echo(blue(keys.public_key.get_secret_value()))
+    click.echo('Private Key (keep is secret, keep it safe)')
+    click.echo(keys.private_key.get_secret_value())
+    click.echo('Public Key (you can share this one)')
+    click.echo(keys.public_key)
     click.echo('-----------------')
 
 
@@ -56,20 +50,19 @@ def encrypt():
     else:
         data = questionary.password('Enter (or paste) the text to encrypt:').ask()
 
-    encrypted = crypt.encrypt(data.encode(), public_key)
-    click.echo(green(encrypted))
+    encrypted = crypt.encrypt(data, public_key)
+    click.echo(encrypted)
 
 
 @main.command()
 def decrypt():
     private_key = questionary.password('Enter your private key:').ask()
-    public_key = questionary.text('Enter the public key:').ask()
     crypt = Crypt(private_key.encode())
 
     data = questionary.text('Enter the encrypted text:').ask()
 
-    decrypted = crypt.decrypt(data.encode(), public_key)
-    click.echo(green(decrypted.decode()))
+    decrypted = crypt.decrypt(data.encode())
+    click.echo(decrypted)
 
 
 if __name__ == '__main__':
