@@ -1,4 +1,4 @@
-from nacl.encoding import Base64Encoder, HexEncoder
+from nacl.encoding import HexEncoder
 from nacl.public import Box, PrivateKey, PublicKey
 from pydantic import BaseModel, SecretStr
 

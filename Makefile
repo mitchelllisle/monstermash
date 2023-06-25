@@ -1,6 +1,8 @@
 .PHONY: clean clean-test clean-pyc clean-build docs help test test-cov
 .DEFAULT_GOAL := help
 
+VERSION=0.7.6
+
 clean: ## remove all build, test, coverage and Python artifacts
 	@echo -----------------------------------------------------------------
 	@echo CLEANING UP ...
@@ -91,3 +93,7 @@ stop-infra:
 
 docs: ## generate Sphinx HTML documentation, including API docs
 	mkdocs build html
+
+tag:
+	git tag v$(VERSION)
+	git push origin v$(VERSION)
