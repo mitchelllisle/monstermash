@@ -11,7 +11,7 @@ from monstermash.__main__ import mash
 from monstermash.crypt import KeyPair
 from monstermash.utils.file import NEW_LINE_EXPR
 
-ACCEPTABLE_ENTROPY = 3.7
+ACCEPTABLE_ENTROPY = 3.6
 
 
 def replace_new_line(text: str) -> str:
