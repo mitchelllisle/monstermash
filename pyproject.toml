@@ -40,10 +40,12 @@ pytest = "^7.2.2"
 pytest-dotenv = "^0.5.2"
 pytest-cov = "^4.0.0"
 scipy = "^1.10.1"
+hypothesis = "^6.79.3"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-monstermash = { callable = "monstermash.__main__:main"}
+monstermash = { callable = "monstermash.__main__:mash"}
+mash = { callable = "monstermash.__main__:mash"}
