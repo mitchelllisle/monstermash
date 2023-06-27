@@ -46,4 +46,5 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-monstermash = { callable = "monstermash.__main__:main"}
+monstermash = { callable = "monstermash.__main__:mash"}
+mash = { callable = "monstermash.__main__:mash"}

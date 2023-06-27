@@ -4,7 +4,7 @@ import numpy as np
 from click.testing import CliRunner
 from scipy.stats import entropy
 
-from monstermash.__main__ import main
+from monstermash.__main__ import mash
 
 ACCEPTABLE_ENTROPY = 3.7
 
@@ -36,7 +36,7 @@ def get_entropy(data):
 
 def test_generate():
     runner = CliRunner()
-    results = runner.invoke(main, ['generate'])
+    results = runner.invoke(mash, ['generate'])
     data = results.stdout.split('\n')
     assert data[1] == 'Private Key (keep is secret, keep it safe)'
     assert data[3] == 'Public Key (you can share this one)'

@@ -1,7 +1,12 @@
-Name                          Stmts   Miss  Cover
--------------------------------------------------
-src/monstermash/__init__.py       3      0   100%
-src/monstermash/__main__.py      45     22    51%
-src/monstermash/crypt.py         38      2    95%
--------------------------------------------------
-TOTAL                            86     24    72%
+Name                                Stmts   Miss  Cover
+-------------------------------------------------------
+src/monstermash/__init__.py             3      0   100%
+src/monstermash/__main__.py            88     41    53%
+src/monstermash/config.py              10      1    90%
+src/monstermash/crypt.py               35      2    94%
+src/monstermash/datamodels.py           4      0   100%
+src/monstermash/parser.py              11      4    64%
+src/monstermash/utils/__init__.py       0      0   100%
+src/monstermash/utils/file.py           9      6    33%
+-------------------------------------------------------
+TOTAL                                 160     54    66%

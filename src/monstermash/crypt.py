@@ -1,11 +1,7 @@
 from nacl.encoding import HexEncoder
 from nacl.public import Box, PrivateKey, PublicKey
-from pydantic import BaseModel, SecretStr
 
-
-class KeyPair(BaseModel):
-    private_key: SecretStr
-    public_key: str
+from monstermash.datamodels import KeyPair
 
 
 class Crypt:
