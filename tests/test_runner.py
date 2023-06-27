@@ -9,9 +9,9 @@ from scipy.stats import entropy
 
 from monstermash.__main__ import mash
 from monstermash.crypt import KeyPair
+from monstermash.utils.file import NEW_LINE_EXPR
 
 ACCEPTABLE_ENTROPY = 3.7
-NEW_LINE_EXPR = re.compile(r'[\n\r]')
 
 
 def replace_new_line(text: str) -> str:

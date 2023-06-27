@@ -1,6 +1,8 @@
 import json
 import re
 
+NEW_LINE_EXPR = re.compile(r'[\n\r]')
+
 
 def open_file(file):
     if re.search('.json$', file):

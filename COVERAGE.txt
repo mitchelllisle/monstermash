@@ -7,6 +7,6 @@ src/monstermash/crypt.py               35      2    94%
 src/monstermash/datamodels.py           4      0   100%
 src/monstermash/parser.py              11      4    64%
 src/monstermash/utils/__init__.py       0      0   100%
-src/monstermash/utils/file.py           9      2    78%
+src/monstermash/utils/file.py          10      2    80%
 -------------------------------------------------------
-TOTAL                                 160     34    79%
+TOTAL                                 161     34    79%

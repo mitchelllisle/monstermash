@@ -1,11 +1,11 @@
-from typing import Dict, Mapping, Optional
+from typing import Mapping, Optional
 
 import click
 
 from monstermash.config import Config
 from monstermash.crypt import Crypt
 from monstermash.parser import ConfigManager
-from monstermash.utils.file import open_file
+from monstermash.utils.file import NEW_LINE_EXPR, open_file
 
 
 @click.group()
@@ -110,7 +110,7 @@ def decrypt(
     if data is None:
         raise ValueError('you must specify either --file or --data')
 
-    decrypted = crypt.decrypt(data.encode())
+    decrypted = crypt.decrypt(NEW_LINE_EXPR.sub('', data).encode())
     click.echo(decrypted)
 
 
