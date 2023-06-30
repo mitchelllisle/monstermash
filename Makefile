@@ -1,7 +1,7 @@
 .PHONY: clean clean-test clean-pyc clean-build docs help test test-cov
 .DEFAULT_GOAL := help
 
-VERSION=1.2.0
+VERSION=1.4.0
 
 clean: ## remove all build, test, coverage and Python artifacts
 	@echo -----------------------------------------------------------------
@@ -30,6 +30,8 @@ clean-test: ## remove test and coverage artifacts
 	rm -f .coverage
 	rm -fr htmlcov/
 	rm -fr .pytest_cache
+	rm -fr .mypy_cache
+	rm -fr .hypothesis
 
 
 test: ## run tests (and coverage if configured in setup.cfg) with the default Python

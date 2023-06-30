@@ -29,7 +29,6 @@ theme:
 
 nav:
   - Home: index.md
-  - Usage: usage.md
   - API : docs/
   - Contributing: contributing.md
 
