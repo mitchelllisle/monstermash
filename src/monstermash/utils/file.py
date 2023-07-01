@@ -1,11 +1,13 @@
 import json
 import re
-from typing import Any
+from typing import Union
+
+from pydantic import Json
 
 NEW_LINE_EXPR = re.compile(r'[\n\r]')
 
 
-def open_file(file) -> Any:
+def open_file(file) -> Union[Json, str]:
     """
     Open a file and return its contents. For JSON files, the contents are returned as a dictionary.
     For non-JSON files, the contents are returned as a string.
