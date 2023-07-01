@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "monstermash"
-version = "1.7.1"
+version = "1.7.2"
 description = ""
 authors = ["Mitchell Lisle <m.lisle90@gmail.com>"]
 readme = "README.md"
