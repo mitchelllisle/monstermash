@@ -364,7 +364,7 @@ toml = ["tomli"]
 name = "cryptography"
 version = "41.0.1"
 description = "cryptography is a package which provides cryptographic recipes and primitives to Python developers."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -2074,4 +2074,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<3.12"
-content-hash = "f99146f26a93d47c271b439779c46a91add5b16e7ef66e27100186e7f012db66"
+content-hash = "6d916641fb30965290e47430f28d1f818066e6f5698967d3f906e461882e9c62"
