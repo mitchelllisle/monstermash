@@ -1,3 +1,4 @@
+import os
 import re
 from collections import Counter
 
@@ -104,3 +105,21 @@ def test_encrypt_and_decrypt_priv_pub_file(keypair_one: KeyPair, keypair_two: Ke
         ],
     )
     assert replace_new_line(decrypted.output) == replace_new_line(lyrics)
+
+
+def test_configure(keypair_one: KeyPair, lyrics: str):
+    runner = CliRunner()
+    runner.invoke(
+        mash,
+        [
+            'configure',
+            f'--profile=tests',
+            f'--private-key={keypair_one.private_key.get_secret_value()}',
+            f'--public-key={keypair_one.public_key}',
+        ],
+    )
+    encrypted = runner.invoke(mash, ['encrypt', '--profile=tests', '--data=helloworld'])
+    decrypted = runner.invoke(
+        mash, ['decrypt', '--profile=tests', f'--data={replace_new_line(encrypted.output)}']
+    )
+    assert replace_new_line(decrypted.output) == 'helloworld'
