@@ -10,12 +10,14 @@ theme:
     text: Inter
   palette:
     - scheme: default
+      primary: purple
       toggle:
-        icon: material/brightness-7
+        icon: material/lightbulb
         name: Switch to dark mode
     - scheme: slate
+      primary: purple
       toggle:
-        icon: material/brightness-4
+        icon: material/lightbulb-outline
         name: Switch to light mode
   icon:
     logo: material/shield-lock
