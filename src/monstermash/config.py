@@ -1,6 +1,7 @@
 import os
 
-from pydantic import BaseSettings, validator
+from pydantic import field_validator
+from pydantic_settings import BaseSettings
 
 
 class Config(BaseSettings):
@@ -14,7 +15,7 @@ class Config(BaseSettings):
 
     config_file: str = '~/.monstermashcfg'
 
-    @validator('config_file', always=True)
+    @field_validator('config_file')
     def validate_file(cls, v: str) -> str:
         """
         Validate and normalize the path of the configuration file.
