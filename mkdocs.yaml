@@ -18,7 +18,7 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
   icon:
-    logo: material/database
+    logo: material/shield-lock
     repo: fontawesome/brands/github
   features:
     - content.code.annotate
