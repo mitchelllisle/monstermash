@@ -1,7 +1,7 @@
 .PHONY: clean clean-test clean-pyc clean-build docs help test test-cov
 .DEFAULT_GOAL := help
 
-VERSION=1.4.0
+VERSION=1.6.0
 
 clean: ## remove all build, test, coverage and Python artifacts
 	@echo -----------------------------------------------------------------
@@ -17,6 +17,7 @@ clean-build: ## remove build artifacts
 	rm -fr .eggs/
 	find . -name '*.egg-info' -exec rm -fr {} +
 	find . -name '*.egg' -exec rm -f {} +
+	rm -fr site
 
 clean-pyc: ## remove Python file artifacts
 	@echo cleaning pyc file artifacts ...
