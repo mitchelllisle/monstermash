@@ -1,7 +1,7 @@
 .PHONY: clean clean-test clean-pyc clean-build docs help test test-cov
 .DEFAULT_GOAL := help
 
-VERSION=1.8.0
+VERSION=1.9.0
 
 clean: ## remove all build, test, coverage and Python artifacts
 	@echo -----------------------------------------------------------------
@@ -86,7 +86,7 @@ install-dev-local: ## install all the stuff you need to develop locally
 	pre-commit install
 
 publish: dist ## publish the package to PyPI
-	poetry publish
+	poetry publish --repository ubank
 
 run-infra:
 	docker-compose -f docker/dev/docker-compose.yaml up --remove-orphans -d
@@ -100,3 +100,6 @@ docs: ## generate Sphinx HTML documentation, including API docs
 tag:
 	git tag v$(VERSION)
 	git push origin v$(VERSION)
+
+configure-poetry-for-publishing:
+	poetry config http-basic.ubank aws $(aws codeartifact get-authorization-token --domain ubank --query authorizationToken --output text)
