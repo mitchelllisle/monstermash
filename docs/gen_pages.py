@@ -6,9 +6,7 @@ import mkdocs_gen_files
 nav = mkdocs_gen_files.Nav()
 
 
-def keep_file(
-    file: PosixPath, exclude: Tuple = ('__main__.py', '__init__.py', 'logger.py')
-) -> bool:
+def keep_file(file: PosixPath, exclude: Tuple = ('__main__.py', '__init__.py', 'logger.py')) -> bool:
     file_string = '/'.join(file.parts)
     for suffix in exclude:
         if file_string.endswith(suffix):

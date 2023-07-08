@@ -69,9 +69,7 @@ class Crypt:
         private_key = PrivateKey.generate()
         private_key_encoded = private_key.encode(encoder)
         public_key_encoded = private_key.public_key.encode(encoder)
-        return KeyPair(
-            private_key=SecretStr(private_key_encoded.decode()), public_key=public_key_encoded
-        )
+        return KeyPair(private_key=SecretStr(private_key_encoded.decode()), public_key=public_key_encoded)
 
     def encrypt(self, message: bytes, public_key: bytes) -> bytes:
         """

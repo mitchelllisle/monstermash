@@ -1,5 +1,3 @@
-import os
-import re
 from collections import Counter
 
 import numpy as np
@@ -89,7 +87,7 @@ def test_encrypt_and_decrypt_priv_pub_file(keypair_one: KeyPair, keypair_two: Ke
             'encrypt',
             f'--private-key={keypair_one.private_key.get_secret_value()}',
             f'--public-key={keypair_two.public_key}',
-            f'--file=tests/monstermash-lyrics.txt',
+            '--file=tests/monstermash-lyrics.txt',
         ],
     )
     assert get_entropy(encrypted.output) >= ACCEPTABLE_ENTROPY
@@ -113,13 +111,11 @@ def test_configure(keypair_one: KeyPair, lyrics: str):
         mash,
         [
             'configure',
-            f'--profile=tests',
+            '--profile=tests',
             f'--private-key={keypair_one.private_key.get_secret_value()}',
             f'--public-key={keypair_one.public_key}',
         ],
     )
     encrypted = runner.invoke(mash, ['encrypt', '--profile=tests', '--data=helloworld'])
-    decrypted = runner.invoke(
-        mash, ['decrypt', '--profile=tests', f'--data={replace_new_line(encrypted.output)}']
-    )
+    decrypted = runner.invoke(mash, ['decrypt', '--profile=tests', f'--data={replace_new_line(encrypted.output)}'])
     assert replace_new_line(decrypted.output) == 'helloworld'
