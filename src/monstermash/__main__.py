@@ -1,10 +1,10 @@
 from typing import Mapping, Optional
 
 import click
+from pydantic import SecretStr
 
 from monstermash.config import Config
 from monstermash.crypt import Crypt
-from pydantic import SecretStr
 from monstermash.parser import ConfigManager
 from monstermash.utils.file import NEW_LINE_EXPR, open_file
 
@@ -40,7 +40,7 @@ def generate():
 @click.option('--public-key', prompt='Your public key', help='Your public key.')
 @click.option('--password', hide_input=True, default=None)
 def configure(
-        config_manager: ConfigManager, profile: str, private_key: str, public_key: str, password: Optional[SecretStr]
+    config_manager: ConfigManager, profile: str, private_key: str, public_key: str, password: Optional[SecretStr]
 ):
     config = config_manager.read()
     config_manager.write(config, profile=profile, private_key=private_key, public_key=public_key, password=password)

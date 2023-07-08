@@ -1,9 +1,10 @@
 from configparser import ConfigParser
-from pydantic import SecretBytes
 from typing import Optional
+
+from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
 from nacl import secret
 from nacl.encoding import HexEncoder
-from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
+from pydantic import SecretBytes
 
 
 class ConfigManager:
@@ -13,6 +14,7 @@ class ConfigManager:
     generating a set of keys (using `monstermash generate`) that will be used for future encryption and decryption
     operations
     """
+
     salt = SecretBytes(b'381ead4e310ca929ae7527c3cd850fac')
 
     def __init__(self, config_file: str):
@@ -48,9 +50,8 @@ class ConfigManager:
         return safe.encrypt(private_key.encode()).hex()
 
     def write(
-            self,
-            config: ConfigParser, profile: str, private_key: str, public_key: str,
-            password: Optional[str] = None):
+        self, config: ConfigParser, profile: str, private_key: str, public_key: str, password: Optional[str] = None
+    ):
         """
         Write a ConfigParser object to the configuration file.
 
@@ -65,7 +66,7 @@ class ConfigManager:
         with open(self.config_file, 'w+') as f:
             payload = {'private_key': private_key, 'public_key': public_key, 'protected': 'no'}
             if password:
-                payload["protected"] = 'yes'
-                payload["private_key"] = self._encrypt_private_key_with_key(private_key, password)
+                payload['protected'] = 'yes'
+                payload['private_key'] = self._encrypt_private_key_with_key(private_key, password)
             config[profile] = payload
             config.write(f)

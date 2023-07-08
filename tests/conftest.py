@@ -1,4 +1,3 @@
-from click.testing import CliRunner
 from pytest import fixture
 
 from monstermash.crypt import KeyPair
