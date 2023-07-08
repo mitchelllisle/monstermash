@@ -3,7 +3,8 @@ from typing import Mapping, Optional
 import click
 
 from monstermash.config import Config
-from monstermash.crypt import Crypt, KeyPair
+from monstermash.crypt import Crypt
+from pydantic import SecretStr
 from monstermash.parser import ConfigManager
 from monstermash.utils.file import NEW_LINE_EXPR, open_file
 
@@ -37,10 +38,12 @@ def generate():
 )
 @click.option('--private-key', prompt='Your private key', help='Your private key.')
 @click.option('--public-key', prompt='Your public key', help='Your public key.')
-def configure(config_manager: ConfigManager, profile: str, private_key: str, public_key: str):
+@click.option('--password', hide_input=True, default=None)
+def configure(
+        config_manager: ConfigManager, profile: str, private_key: str, public_key: str, password: Optional[SecretStr]
+):
     config = config_manager.read()
-    config[profile] = {'private_key': private_key, 'public_key': public_key}
-    config_manager.write(config)
+    config_manager.write(config, profile=profile, private_key=private_key, public_key=public_key, password=password)
     click.echo('.monstermashcfg file in your root directory contains the config')
 
 
@@ -49,6 +52,7 @@ def configure(config_manager: ConfigManager, profile: str, private_key: str, pub
 @click.option('--profile', default=None)
 @click.option('--private-key', default=None, help='Your private key.')
 @click.option('--public-key', default=None, help='Your public key.')
+@click.option('--password', hide_input=True, default=None)
 @click.option('--file', default=None, help='The path to the file you want to encrypt')
 @click.option('--data', default=None, help='Input data you want to encrypt')
 def encrypt(
@@ -56,6 +60,7 @@ def encrypt(
     profile: Optional[str],
     private_key: Optional[str],
     public_key: Optional[str],
+    password: Optional[str],
     file: Optional[str],
     data: Optional[str],
 ):
