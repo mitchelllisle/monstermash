@@ -3,7 +3,7 @@ from typing import Mapping, Optional
 import click
 
 from monstermash.config import Config
-from monstermash.crypt import Crypt, KeyPair
+from monstermash.crypt import Crypt
 from monstermash.parser import ConfigManager
 from monstermash.utils.file import NEW_LINE_EXPR, open_file
 
