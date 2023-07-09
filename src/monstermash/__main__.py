@@ -20,7 +20,7 @@ def generate():
     keys = Crypt.generate()
 
     click.echo('-----------------')
-    click.echo('Private Key (keep is secret, keep it safe)')
+    click.echo('Private Key (keep it secret, keep it safe)')
     click.echo(keys.private_key.get_secret_value())
     click.echo('Public Key (you can share this one)')
     click.echo(keys.public_key)
