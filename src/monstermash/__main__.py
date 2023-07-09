@@ -72,6 +72,9 @@ def encrypt(
     if private_key is None:
         raise ValueError('you must specify either a private key or profile')
 
+    if password:
+        private_key = config_manager.decrypt_private_key_with_key(private_key, password)
+
     crypt = Crypt(private_key.encode())
 
     if file is not None:
@@ -123,6 +126,7 @@ def _echo_config(section: str, config: Mapping):
     click.echo(f'[{section}]')
     click.echo(f"private_key: {config[section]['private_key']}")
     click.echo(f"public_key: {config[section]['public_key']}")
+    click.echo(f"protected: {config[section]['protected']}")
     click.echo('----------------')
 
 

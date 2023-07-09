@@ -49,6 +49,11 @@ class ConfigManager:
         safe = secret.SecretBox(key.encode(), encoder=HexEncoder)
         return safe.encrypt(private_key.encode()).hex()
 
+    def decrypt_private_key_with_key(self, ciphertext: str, password: str) -> str:
+        key = self.kdf.derive(password.encode()).hex()
+        safe = secret.SecretBox(key.encode(), encoder=HexEncoder)
+        return safe.decrypt(ciphertext.encode()).decode()
+
     def write(
         self, config: ConfigParser, profile: str, private_key: str, public_key: str, password: Optional[str] = None
     ):
@@ -58,7 +63,6 @@ class ConfigManager:
         Args:
             config (ConfigParser): The ConfigParser object to be written to the file.
             password (Optional[bytes])
-            password:
             public_key:
             private_key:
             profile:
