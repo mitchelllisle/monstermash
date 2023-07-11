@@ -46,7 +46,7 @@ def test_generate():
     runner = CliRunner()
     results = runner.invoke(mash, ['generate'])
     data = results.stdout.split('\n')
-    assert data[1] == 'Private Key (keep is secret, keep it safe)'
+    assert data[1] == 'Private Key (keep it secret, keep it safe)'
     assert data[3] == 'Public Key (you can share this one)'
     assert get_entropy(data[2]) >= ACCEPTABLE_ENTROPY
     assert get_entropy(data[4]) >= ACCEPTABLE_ENTROPY
