@@ -47,6 +47,9 @@ coverage: ## check code coverage quickly with the default Python
 	@echo producing coverage report at COVERAGE.txt...
 	coverage report > COVERAGE.txt
 
+test-ci:
+	poetry run pytest --cov=monstermash --cov-report=json
+
 
 dist: clean ## builds source and wheel package
 	poetry build
