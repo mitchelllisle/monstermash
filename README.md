@@ -1,6 +1,6 @@
 ##  🧟 Monstermash
 
-> 1️⃣ version: 1.11.0
+> 1️⃣ version: 1.12.0
 
 > ✍️ author: Mitchell Lisle
 
