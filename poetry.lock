@@ -556,13 +556,13 @@ colorama = ">=0.4"
 
 [[package]]
 name = "hypothesis"
-version = "6.97.2"
+version = "6.97.4"
 description = "A library for property-based testing"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "hypothesis-6.97.2-py3-none-any.whl", hash = "sha256:7cf6d7a7b5acc898269478d62e4d25f373e8df6b4900b0447b39d44f12385352"},
-    {file = "hypothesis-6.97.2.tar.gz", hash = "sha256:17d2752532e59518586d3e13585f31869bc4b24105a96f30374b7a0524100505"},
+    {file = "hypothesis-6.97.4-py3-none-any.whl", hash = "sha256:9069fe3fb18d9b7dd218bd69ab50bbc66426819dfac7cc7168ba85034d98a4df"},
+    {file = "hypothesis-6.97.4.tar.gz", hash = "sha256:28ff724fa81ccc55f64f0f1eb06e4a75db6a195fe0857e9b3184cf4ff613a103"},
 ]
 
 [package.dependencies]
