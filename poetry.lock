@@ -1779,14 +1779,14 @@ plugins = ["importlib-metadata ; python_version < \"3.8\""]
 
 [[package]]
 name = "pymdown-extensions"
-version = "10.20"
+version = "10.21.2"
 description = "Extension pack for Python Markdown."
 optional = false
 python-versions = ">=3.9"
 groups = ["docs"]
 files = [
-    {file = "pymdown_extensions-10.20-py3-none-any.whl", hash = "sha256:ea9e62add865da80a271d00bfa1c0fa085b20d133fb3fc97afdc88e682f60b2f"},
-    {file = "pymdown_extensions-10.20.tar.gz", hash = "sha256:5c73566ab0cf38c6ba084cb7c5ea64a119ae0500cce754ccb682761dfea13a52"},
+    {file = "pymdown_extensions-10.21.2-py3-none-any.whl", hash = "sha256:5c0fd2a2bea14eb39af8ff284f1066d898ab2187d81b889b75d46d4348c01638"},
+    {file = "pymdown_extensions-10.21.2.tar.gz", hash = "sha256:c3f55a5b8a1d0edf6699e35dcbea71d978d34ff3fa79f3d807b8a5b3fa90fbdc"},
 ]
 
 [package.dependencies]
@@ -2396,4 +2396,4 @@ test = ["big-O", "jaraco.functools", "jaraco.itertools", "jaraco.test", "more-it
 [metadata]
 lock-version = "2.1"
 python-versions = ">3.9.1,<4.0"
-content-hash = "2a38ebecea03ae64a9d4df28fd65b804a47b5548a7b9201058748981f1b45d77"
+content-hash = "210ababbb637530573476b73b4910eec16cedf31b9594c27a40ec5117a3a6dc5"
