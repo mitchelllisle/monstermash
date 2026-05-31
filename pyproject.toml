@@ -1,57 +1,59 @@
-[tool.poetry]
+[project]
 name = "monstermash"
 version = "1.13.0"
 description = ""
-authors = ["Mitchell Lisle <m.lisle90@gmail.com>"]
+authors = [
+    {name = "Mitchell Lisle", email = "m.lisle90@gmail.com"}
+]
 readme = "README.md"
-packages = [{include = "monstermash", from = "src"}]
+requires-python = ">3.9.1,<4.0"
+dependencies = [
+    "pynacl>=1.6.2,<2.0.0",
+    "click>=8.1.3,<9.0.0",
+    "pydantic>=2.12,<3.0",
+    "pydantic-settings>=2.11.0,<3.0.0",
+    "cryptography>=44.0.0",
+]
 
+[project.optional-dependencies]
+dev = [
+    "bumpversion>=0.6.0,<0.7.0",
+    "twine>=4.0.2,<7.0.0",
+    "flake8>=6,<8",
+    "dlint>=0.14,<0.17",
+    "mypy>=1.19.1,<2.0.0",
+    "pre-commit>=3.2.1,<5.0.0",
+    "setuptools>=67.6,<81.0",
+    "flake8-bugbear>=23.3.23,<25.0.0",
+    "pep8-naming>=0.13.3,<0.16.0",
+]
+docs = [
+    "mkdocs>=1.4.2,<2.0.0",
+    "mkdocs-material>=9.7.1,<10.0.0",
+    "mkdocs-gen-files>=0.4,<0.7",
+    "mkdocs-literate-nav>=0.6.0,<0.7.0",
+    "mkdocstrings[python]>=0.20,<0.31",
+    "mkautodoc>=0.2.0,<0.3.0",
+    "pymdown-extensions>=10.20.0,<11.0.0",
+]
+test = [
+    "pytest>=7.2.2,<9.0.0",
+    "pytest-dotenv>=0.5.2,<0.6.0",
+    "pytest-cov>=4,<8",
+    "scipy>=1.10.1,<2.0.0",
+    "hypothesis>=6.141.1,<7.0.0",
+]
 
-[tool.poetry.dependencies]
-python = ">3.9.1,<4.0"
-pynacl = "^1.6.2"
-click = "^8.1.3"
-pydantic = "^2.12"
-pydantic-settings = "^2.11.0"
-cryptography = ">=44.0.0"
-
-
-[tool.poetry.group.dev.dependencies]
-bumpversion = "^0.6.0"
-twine = ">=4.0.2,<7.0.0"
-flake8 = ">=6,<8"
-dlint = ">=0.14,<0.17"
-mypy = "^1.19.1"
-pre-commit = ">=3.2.1,<5.0.0"
-setuptools = ">=67.6,<81.0"
-flake8-bugbear = ">=23.3.23,<25.0.0"
-pep8-naming = ">=0.13.3,<0.16.0"
-
-
-[tool.poetry.group.docs.dependencies]
-mkdocs = "^1.4.2"
-mkdocs-material = "^9.7.1"
-mkdocs-gen-files = ">=0.4,<0.7"
-mkdocs-literate-nav = "^0.6.0"
-mkdocstrings = {extras = ["python"], version = ">=0.20,<0.31"}
-mkautodoc = "^0.2.0"
-pymdown-extensions = "^10.20.0"
-
-
-[tool.poetry.group.test.dependencies]
-pytest = ">=7.2.2,<9.0.0"
-pytest-dotenv = "^0.5.2"
-pytest-cov = ">=4,<8"
-scipy = "^1.10.1"
-hypothesis = "^6.141.1"
+[project.scripts]
+monstermash = "monstermash.__main__:mash"
+mash = "monstermash.__main__:mash"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.poetry.scripts]
-monstermash = { callable = "monstermash.__main__:mash"}
-mash = { callable = "monstermash.__main__:mash"}
+[tool.hatch.build.targets.wheel]
+packages = ["src/monstermash"]
 
 [tool.ruff]
 # Enable the pycodestyle (`E`) and Pyflakes (`F`) rules by default.
