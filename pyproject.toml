@@ -28,7 +28,7 @@ dev = [
     "pep8-naming>=0.15.1,<0.16.0",
 ]
 docs = [
-    "mkdocs>=1.4.2,<2.0.0",
+    "mkdocs>=1.6.1,<2.0.0",
     "mkdocs-material>=9.7.1,<10.0.0",
     "mkdocs-gen-files>=0.4,<0.7",
     "mkdocs-literate-nav>=0.6.0,<0.7.0",
