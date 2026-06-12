@@ -24,7 +24,7 @@ dev = [
     "mypy>=1.19.1,<2.0.0",
     "pre-commit>=4.6.0,<5.0.0",
     "setuptools>=67.6,<81.0",
-    "flake8-bugbear>=23.3.23,<25.0.0",
+    "flake8-bugbear>=25.11.29,<26.0.0",
     "pep8-naming>=0.15.1,<0.16.0",
 ]
 docs = [
