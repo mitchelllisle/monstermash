@@ -34,7 +34,7 @@ docs = [
     "mkdocs-literate-nav>=0.6.0,<0.7.0",
     "mkdocstrings[python]>=0.20,<0.31",
     "mkautodoc>=0.2.0,<0.3.0",
-    "pymdown-extensions>=10.21.0,<11.0.0",
+    "pymdown-extensions>=10.21.3,<11.0.0",
 ]
 test = [
     "pytest>=9.0.3,<10.0.0",
