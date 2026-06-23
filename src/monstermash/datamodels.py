@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import BaseModel, SecretStr
 
 
@@ -17,10 +19,13 @@ class KeyPair(BaseModel):
 class ProfileConfig(BaseModel):
     """Keys stored under a single profile in the Monstermash config file.
 
+    A profile is either an owned keypair (both keys) or a *contact* — a recipient's
+    public key with no private key, usable only as an encryption target.
+
     Attributes:
-        private_key (SecretStr): The profile's private key.
+        private_key (Optional[SecretStr]): The profile's private key; ``None`` for a contact.
         public_key (str): The profile's public key.
     """
 
-    private_key: SecretStr
+    private_key: Optional[SecretStr] = None
     public_key: str

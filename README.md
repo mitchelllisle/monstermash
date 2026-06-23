@@ -17,7 +17,7 @@
 engineers, and now AI agents can encrypt things correctly without touching a single cryptographic
 knob.
 
-> 1️⃣ version: 2.0.0 &nbsp;·&nbsp; ✍️ author: Mitchell Lisle
+> 1️⃣ version: 2.1.0 &nbsp;·&nbsp; ✍️ author: Mitchell Lisle
 
 ![PyPI](https://img.shields.io/pypi/v/monstermash)
 ![Python](https://img.shields.io/pypi/pyversions/monstermash)
@@ -148,9 +148,10 @@ Register it with an MCP client (e.g. Claude Desktop):
 | Tool | Description |
 | --- | --- |
 | `generate_keypair` | Generate a keypair, store it under a profile, and return only the public key. |
-| `encrypt` | Encrypt text using a profile's keys (recipient defaults to the profile; override with `public_key`). |
+| `encrypt` | Encrypt text using a profile's keys. Recipient defaults to the profile; target a stored contact with `recipient`, or pass a raw `public_key`. |
 | `decrypt` | Decrypt a ciphertext using a profile's private key. |
 | `configure` | Import an existing keypair under a named profile. |
+| `add_contact` | Store a shared public key under a name (a contact); usable as an `encrypt` recipient, never able to decrypt. |
 | `list_profiles` | List profile names and public keys — **private keys are never returned**. |
 
 ## License

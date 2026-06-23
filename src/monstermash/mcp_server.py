@@ -92,24 +92,31 @@ def generate_keypair(profile: str) -> dict:
 
 
 @mcp.tool()
-def encrypt(data: str, public_key: Optional[str] = None, profile: Optional[str] = None) -> str:
+def encrypt(
+    data: str,
+    public_key: Optional[str] = None,
+    profile: Optional[str] = None,
+    recipient: Optional[str] = None,
+) -> str:
     """Encrypt text using the Monstermash style of encryption.
 
-    The sender's private key is sourced from a stored profile (never passed as an argument). By
-    default the recipient is the profile's own public key; pass ``public_key`` to encrypt to a
-    different recipient.
+    The sender's private key is sourced from a stored profile (never passed as an argument). The
+    recipient is, in order: a stored ``recipient`` profile/contact's public key, an explicit
+    ``public_key``, or the sender profile's own key. Pass ``recipient`` to target a contact added
+    with ``add_contact``. ``recipient`` and ``public_key`` may not be combined.
 
     Args:
         data (str): The plaintext to encrypt.
         public_key (Optional[str]): Hex-encoded recipient public key. Defaults to the profile's.
         profile (Optional[str]): Profile to source the sender key from. Falls back to the configured
             default profile.
+        recipient (Optional[str]): Name of a stored profile/contact whose public key is the recipient.
 
     Returns:
         str: The hex-encoded ciphertext.
     """
     profile = _require_profile(profile)
-    private_key, public_key = resolve_encrypt_keys(default_config_manager(), profile, None, public_key)
+    private_key, public_key = resolve_encrypt_keys(default_config_manager(), profile, None, public_key, recipient)
     crypt = Crypt(private_key.encode())
     encrypted = crypt.encrypt(data.encode(), public_key.encode())
     return encrypted.decode()
@@ -157,6 +164,28 @@ def configure(profile: str, private_key: str, public_key: str) -> str:
     config[profile] = {'private_key': private_key, 'public_key': public_key}
     config_manager.write(config)
     return f"Stored profile '{profile}' in the Monstermash config file."
+
+
+@mcp.tool()
+def add_contact(profile: str, public_key: str) -> str:
+    """Store a recipient's public key under a profile name (a contact).
+
+    A contact holds only a public key — no private key — so it can be used as an encryption
+    recipient (via the ``encrypt`` tool's ``recipient`` argument) but can never decrypt. Use this
+    when someone shares their public key with you. To import a keypair you own, use ``configure``.
+
+    Args:
+        profile (str): The contact name to create or overwrite.
+        public_key (str): Hex-encoded public key shared by the recipient.
+
+    Returns:
+        str: A confirmation message.
+    """
+    config_manager = default_config_manager()
+    config = config_manager.read()
+    config[profile] = {'public_key': public_key}
+    config_manager.write(config)
+    return f"Stored contact '{profile}' in the Monstermash config file."
 
 
 @mcp.tool()

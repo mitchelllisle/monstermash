@@ -3,7 +3,15 @@ import asyncio
 import pytest
 
 from monstermash.crypt import KeyPair
-from monstermash.mcp_server import configure, decrypt, encrypt, generate_keypair, list_profiles, mcp
+from monstermash.mcp_server import (
+    add_contact,
+    configure,
+    decrypt,
+    encrypt,
+    generate_keypair,
+    list_profiles,
+    mcp,
+)
 
 
 @pytest.fixture
@@ -82,7 +90,7 @@ def test_list_profiles_hides_private_keys(temp_config, keypair_one: KeyPair):
 def test_tools_registered():
     tools = asyncio.run(mcp.list_tools())
     names = {t.name for t in tools}
-    assert names == {'generate_keypair', 'encrypt', 'decrypt', 'configure', 'list_profiles'}
+    assert names == {'generate_keypair', 'encrypt', 'decrypt', 'configure', 'list_profiles', 'add_contact'}
 
 
 def test_mcp_encrypt_decrypt_take_no_private_key_argument():
@@ -91,3 +99,40 @@ def test_mcp_encrypt_decrypt_take_no_private_key_argument():
     by_name = {t.name: t for t in tools}
     assert 'private_key' not in by_name['encrypt'].inputSchema['properties']
     assert 'private_key' not in by_name['decrypt'].inputSchema['properties']
+
+
+def test_add_contact_stores_public_key_only(temp_config, keypair_one: KeyPair):
+    add_contact('bob', keypair_one.public_key)
+    profiles = list_profiles()
+    assert profiles == [{'profile': 'bob', 'public_key': keypair_one.public_key}]
+    # a contact holds no private key on disk
+    assert keypair_one.private_key.get_secret_value() not in temp_config.read_text()
+
+
+def test_encrypt_to_contact_by_name_roundtrips(temp_config):
+    generate_keypair('me')
+    bob = generate_keypair('bob')  # bob owns this keypair; we only share his public key
+    add_contact('bob_contact', bob['public_key'])
+    ciphertext = encrypt('hi bob', profile='me', recipient='bob_contact')
+    assert ciphertext != 'hi bob'
+    # bob decrypts with his own private key; the contact never could
+    assert decrypt(ciphertext, profile='bob') == 'hi bob'
+
+
+def test_contact_cannot_decrypt(temp_config, keypair_one: KeyPair):
+    add_contact('bob', keypair_one.public_key)
+    with pytest.raises(ValueError, match='contact'):
+        decrypt('deadbeef', profile='bob')
+
+
+def test_contact_cannot_be_used_as_sender(temp_config, keypair_one: KeyPair):
+    add_contact('bob', keypair_one.public_key)
+    with pytest.raises(ValueError, match='contact'):
+        encrypt('data', profile='bob')
+
+
+def test_encrypt_rejects_recipient_and_public_key_together(temp_config, keypair_one: KeyPair):
+    generate_keypair('me')
+    add_contact('bob', keypair_one.public_key)
+    with pytest.raises(ValueError, match='not both'):
+        encrypt('data', profile='me', recipient='bob', public_key=keypair_one.public_key)
