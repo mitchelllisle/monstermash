@@ -1,4 +1,4 @@
-from nacl.encoding import HexEncoder
+from nacl.encoding import HexEncoder, RawEncoder
 from nacl.public import Box, PrivateKey, PublicKey
 from pydantic import SecretStr
 
@@ -44,7 +44,7 @@ class Crypt:
         Returns:
             bytes: The raw public key.
         """
-        return self._private_key.public_key._public_key
+        return self._private_key.public_key.encode(RawEncoder)
 
     @property
     def encoded_public_key(self) -> bytes:

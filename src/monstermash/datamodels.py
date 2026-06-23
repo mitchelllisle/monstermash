@@ -12,3 +12,15 @@ class KeyPair(BaseModel):
 
     private_key: SecretStr
     public_key: str
+
+
+class ProfileConfig(BaseModel):
+    """Keys stored under a single profile in the Monstermash config file.
+
+    Attributes:
+        private_key (SecretStr): The profile's private key.
+        public_key (str): The profile's public key.
+    """
+
+    private_key: SecretStr
+    public_key: str

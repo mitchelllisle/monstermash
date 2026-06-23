@@ -26,3 +26,19 @@ def open_file(file) -> Union[Json, str]:
         with open(file, 'r') as f:
             data = f.read()
     return data
+
+
+def read_text(file) -> str:
+    """Read a file's raw contents as text.
+
+    Unlike :func:`open_file`, this never parses JSON — it always returns the file's text verbatim,
+    which is what the encrypt/decrypt commands operate on.
+
+    Args:
+        file (str): The path to the file to read.
+
+    Returns:
+        str: The file contents as text.
+    """
+    with open(file, 'r') as f:
+        return f.read()

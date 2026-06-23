@@ -16,6 +16,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+mcp = [
+    "mcp>=1.28.0",
+]
 dev = [
     "bumpversion>=0.6.0,<0.7.0",
     "twine>=6.2.0,<7.0.0",
@@ -47,6 +50,7 @@ test = [
 [project.scripts]
 monstermash = "monstermash.__main__:mash"
 mash = "monstermash.__main__:mash"
+monstermash-mcp = "monstermash.mcp_server:main"
 
 [build-system]
 requires = ["hatchling"]
