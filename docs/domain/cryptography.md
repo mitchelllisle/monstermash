@@ -39,6 +39,10 @@ Alias / external term: `crypto_box` (libsodium).
 **Profile**
 Definition: A named section in `~/.monstermashcfg` storing a `private_key` + `public_key`, so commands/tools can reference keys by name instead of passing raw key material.
 
+**Contact**
+Definition: A profile section holding only a `public_key` — a recipient's key shared with you, with no private key. Stored via `add_contact` and used as the `recipient` when encrypting. A contact can never decrypt (no private key), so the trust model stays one-directional: you can send to a contact but not read as them.
+Not to be confused with: a *profile* you own, which also stores a `private_key` and can both encrypt and decrypt.
+
 **Encoder**
 Definition: The byte-encoding scheme for keys and messages; Monstermash uses `HexEncoder` throughout, split into `key_encoder` and `message_encoder` on `Crypt`.
 
@@ -76,7 +80,7 @@ Definition: The per-message random value NaCl generates inside `Box.encrypt` and
     - CLI args + stdin/stdout
     - config file (~/.monstermashcfg)
     - file in/out (--file)
-    - MCP over stdio (tools: generate_keypair, encrypt, decrypt, configure, list_profiles)
+    - MCP over stdio (tools: generate_keypair, encrypt, decrypt, configure, add_contact, list_profiles)
 ```
 
 ## Domain Events
@@ -85,6 +89,7 @@ Definition: The per-message random value NaCl generates inside `Box.encrypt` and
 | --- | --- | --- |
 | `KeypairGenerated` | `generate` / `generate_keypair` | User stores or shares the keys |
 | `ProfileConfigured` | `configure` | Later encrypt/decrypt that reference the profile |
+| `ContactAdded` | `add_contact` | Later encrypt that targets the contact as `recipient` |
 | `MessageEncrypted` | `encrypt` | Recipient / transport |
 | `MessageDecrypted` | `decrypt` | The reading application |
 | `DecryptionFailed` | Tampered/wrong-key ciphertext (NaCl `CryptoError`) | Caller, as a loud error |
