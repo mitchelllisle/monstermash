@@ -4,8 +4,9 @@ import click
 
 from monstermash.config import Config
 from monstermash.crypt import Crypt
+from monstermash.keys import resolve_decrypt_key, resolve_encrypt_keys
 from monstermash.parser import ConfigManager
-from monstermash.utils.file import NEW_LINE_EXPR, open_file
+from monstermash.utils.file import NEW_LINE_EXPR, read_text
 
 
 @click.group()
@@ -59,24 +60,15 @@ def encrypt(
     file: Optional[str],
     data: Optional[str],
 ):
-    if profile is not None:
-        config = config_manager.read()
-        private_key = config[profile]['private_key']
-        public_key = config[profile]['public_key'] if public_key is None else public_key
-
-    if private_key is None:
-        raise ValueError('you must specify either a private key or profile')
+    private_key, public_key = resolve_encrypt_keys(config_manager, profile, private_key, public_key)
 
     crypt = Crypt(private_key.encode())
 
     if file is not None:
-        data = open_file(file)
+        data = read_text(file)
 
     if data is None:
         raise ValueError('you must specify either --file or --data')
-
-    if public_key is None:
-        raise ValueError('a public key is required for encryption')
 
     encrypted = crypt.encrypt(data.encode(), public_key.encode())
     click.echo(encrypted)
@@ -95,17 +87,12 @@ def decrypt(
     file: Optional[str],
     data: Optional[str],
 ):
-    if profile is not None:
-        config = config_manager.read()
-        private_key = config[profile]['private_key']
-
-    if private_key is None:
-        raise ValueError('you must specify either a private key or profile')
+    private_key = resolve_decrypt_key(config_manager, profile, private_key)
 
     crypt = Crypt(private_key.encode())
 
     if file is not None:
-        data = open_file(file)
+        data = read_text(file)
 
     if data is None:
         raise ValueError('you must specify either --file or --data')

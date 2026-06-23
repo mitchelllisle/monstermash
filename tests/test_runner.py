@@ -105,7 +105,8 @@ def test_encrypt_and_decrypt_priv_pub_file(keypair_one: KeyPair, keypair_two: Ke
     assert replace_new_line(decrypted.output) == replace_new_line(lyrics)
 
 
-def test_configure(keypair_one: KeyPair, lyrics: str):
+def test_configure(keypair_one: KeyPair, lyrics: str, tmp_path, monkeypatch):
+    monkeypatch.setenv('CONFIG_FILE', str(tmp_path / 'monstermashcfg'))
     runner = CliRunner()
     runner.invoke(
         mash,

@@ -83,3 +83,41 @@ monstermash decrypt \
   --private-key 91c7b2534454587a3330537bce60056e9da9a9bf75d32507152f49e85514970d
   --data 01765c67f451f3175f53bbe11d69d73a36d45074da935271473b4a1c460e3d797bee92fa7ff1216eb5324b247fd41cce283adbcc4df92baacfea27765360a7c0feb226cccc1538c0397783003d0283d2841d2a
 ```
+
+## MCP Server
+Monstermash ships an optional [Model Context Protocol](https://modelcontextprotocol.io) server
+so an LLM can generate keys, encrypt, and decrypt data natively using Monstermash encryption.
+
+Install with the `mcp` extra:
+
+```shell
+pip install "monstermash[mcp]"
+```
+
+Run the server over stdio:
+
+```shell
+monstermash-mcp
+```
+
+Register it with an MCP client (e.g. Claude Desktop) by pointing the client at the command:
+
+```json
+{
+  "mcpServers": {
+    "monstermash": {
+      "command": "monstermash-mcp"
+    }
+  }
+}
+```
+
+The server exposes these tools:
+
+| Tool | Description |
+| --- | --- |
+| `generate_keypair` | Generate a new private/public keypair. |
+| `encrypt` | Encrypt text with explicit keys or a stored profile. |
+| `decrypt` | Decrypt a ciphertext with a private key or stored profile. |
+| `configure` | Store a keypair under a named profile. |
+| `list_profiles` | List stored profile names and public keys (private keys are never returned). |
