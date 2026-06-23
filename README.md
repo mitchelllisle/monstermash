@@ -17,7 +17,7 @@
 engineers, and now AI agents can encrypt things correctly without touching a single cryptographic
 knob.
 
-> 1️⃣ version: 2.0.0 &nbsp;·&nbsp; ✍️ author: Mitchell Lisle
+> 1️⃣ version: 2.1.0 &nbsp;·&nbsp; ✍️ author: Mitchell Lisle
 
 ![PyPI](https://img.shields.io/pypi/v/monstermash)
 ![Python](https://img.shields.io/pypi/pyversions/monstermash)
