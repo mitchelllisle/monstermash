@@ -9,7 +9,7 @@ readme = "README.md"
 requires-python = ">=3.10,<4.0"
 dependencies = [
     "pynacl>=1.6.2,<2.0.0",
-    "click>=8.4.1,<9.0.0",
+    "click>=8.4.2,<9.0.0",
     "pydantic>=2.13.4,<3.0",
     "pydantic-settings>=2.14.2,<3.0.0",
     "cryptography>=49.0.0",
