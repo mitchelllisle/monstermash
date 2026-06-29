@@ -17,7 +17,7 @@ dependencies = [
 
 [project.optional-dependencies]
 mcp = [
-    "mcp>=1.28.0",
+    "mcp>=1.28.1",
 ]
 dev = [
     "bumpversion>=0.6.0,<0.7.0",
