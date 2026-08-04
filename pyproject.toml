@@ -44,7 +44,7 @@ test = [
     "pytest-dotenv>=0.5.2,<0.6.0",
     "pytest-cov>=4,<8",
     "scipy>=1.15.3,<2.0.0",
-    "hypothesis>=6.163.0,<7.0.0",
+    "hypothesis>=6.164.0,<7.0.0",
 ]
 
 [project.scripts]
