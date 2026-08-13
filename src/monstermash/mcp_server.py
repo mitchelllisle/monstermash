@@ -22,7 +22,7 @@ from monstermash.keys import default_config_manager, resolve_decrypt_key, resolv
 from monstermash.utils.file import NEW_LINE_EXPR
 
 try:
-    from mcp.server.fastmcp import FastMCP
+    from mcp.server.mcpserver import MCPServer
 except ImportError as exc:  # pragma: no cover - exercised only when extra is missing
     raise ImportError(
         'The Monstermash MCP server requires the optional "mcp" extra. '
@@ -43,7 +43,7 @@ class MCPSettings(BaseSettings):
     default_profile: Optional[str] = None
 
 
-mcp = FastMCP('monstermash')
+mcp = MCPServer('monstermash')
 
 
 def _require_profile(profile: Optional[str]) -> str:

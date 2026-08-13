@@ -97,8 +97,8 @@ def test_mcp_encrypt_decrypt_take_no_private_key_argument():
     # the security contract: no private_key parameter on the model-facing tools
     tools = asyncio.run(mcp.list_tools())
     by_name = {t.name: t for t in tools}
-    assert 'private_key' not in by_name['encrypt'].inputSchema['properties']
-    assert 'private_key' not in by_name['decrypt'].inputSchema['properties']
+    assert 'private_key' not in by_name['encrypt'].input_schema['properties']
+    assert 'private_key' not in by_name['decrypt'].input_schema['properties']
 
 
 def test_add_contact_stores_public_key_only(temp_config, keypair_one: KeyPair):
